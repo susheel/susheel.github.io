@@ -17,7 +17,7 @@ resume: true
 resume-external: false
 resume-url: assets/Susheel-Varma-CV.pdf
 
-url: https://susheel.github.io
+url: https://susheelvarma.com
 # your url: https://USERNAME.github.io
 
 permalink: /:title/
