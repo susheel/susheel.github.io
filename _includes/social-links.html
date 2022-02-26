@@ -43,6 +43,12 @@
         </a>
     {% endif %}
     
+    {% if site.covid %}
+        <a class="link" data-title="{{ site.covid }}" href="https://{{ site.covid }}" target="_blank"  rel="noopener">
+            <i class="fa-solid fa-virus-covid"></i>
+        </a>
+    {% endif %}
+    
     {% if site.idea %}
         <a class="link" data-title="{{ site.idea }}" href="https://{{ site.idea }}" target="_blank"  rel="noopener">
             <i class="fa-solid fa-rocket-launch"></i>
