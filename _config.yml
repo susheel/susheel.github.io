@@ -11,6 +11,9 @@ description: A Possibilist
 external-image: false
 picture: assets/images/profile.jpg
 
+# your site color theme, false to light theme
+dark-theme: true
+
 # If you want to include your resume, set to true
 # and specify source (external or local).
 resume: true
@@ -23,15 +26,11 @@ url: https://susheelvarma.com
 permalink: /:title/
 
 # To enable google analytics, supply your token below
-# analytics-google: 'UA-MYANALYTICS'
-
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
+analytics-google: 'UA-10229703-1'
 
 # if you don't want comments in your posts, leave categories empty
 disqus:
-  shortname: mydisqus # enter this from your disqus account
+  shortname: github # enter this from your disqus account
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
@@ -51,6 +50,7 @@ gitlab: susheel
 # medium: medium
 # vimeo: myvimeo
 # lanyrd: mylanyrd
+work: "hdruk.ac.uk/people/dr-susheel-varma/"
 email: susheel.varma@gmail.com
 
 authors:
@@ -114,11 +114,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jemoji
-  - jekyll-admin
   - jekyll-paginate-v2
-
-jekyll-mentions:
-  base_url: https://github.com
 
 compress_html:
   ignore:
@@ -128,11 +124,9 @@ compress_html:
 
 exclude:
   [
-    "travis.sh",
     "README.md",
     "Gemfile",
     "Gemfile.lock",
     "FAQ.md",
-    "node_modules",
     "vendor",
   ]
