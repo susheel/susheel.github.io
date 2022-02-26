@@ -42,6 +42,12 @@
             <i class="fa-solid fa-briefcase"></i>
         </a>
     {% endif %}
+    
+    {% if site.idea %}
+        <a class="link" data-title="{{ site.idea }}" href="https://{{ site.idea }}" target="_blank"  rel="noopener">
+            <i class="fa-solid fa-book-sparkles"></i>
+        </a>
+    {% endif %}
 
     {% if site.email %}
         <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}"  rel="noopener">
