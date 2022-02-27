@@ -22,7 +22,7 @@ he managed and led an international portfolio of data science projects in
 multiple jurisdictions and research infrastructures - [EMBL](https://www.embl.org/), 
 [ELIXIR](https://elixir-europe.org/), [EOSC](https://www.eosc.eu/) and [GA4GH](https://www.ga4gh.org/).
 
-He has a broad operating range with high-level tought leadership and in-depth 
+He has a broad operating range with high-level thought leadership and in-depth 
 expertise in managing, developing, integrating, testing and maintaining innovative 
 technical solutions using distributed data, network and software technologies 
 across scientific and clinical domains.
