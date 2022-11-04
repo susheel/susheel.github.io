@@ -16,9 +16,9 @@ His previous roles at [EMBL-EBI](https://ebi.ac.uk) and [ELIXIR](https://ELIXIR-
 
 He has a broad operating range with high-level thought leadership and in-depth expertise in managing, developing, integrating, testing and maintaining innovative technical solutions using distributed data, network and software technologies across scientific and clinical domains.
 
-### Recent Works (See CV for more details)
+### Recent Works (See [CV](/assets/Susheel-Varma-CV.pdf) for more details)
 
-- 2021
+- 2022
   - S Varma et al. [Building Trusted Research Environments - Principles and Best Practices; Towards TRE ecosystems](https://zenodo.org/record/5767586/files/211208%20Building%20TREs%20Paper%20v1.0.pdf?download=1)
   - H L Rhem, [...], S Varma, E Birney, [GA4GH: International policies and standards for data sharing across genomic research and healthcare](https://doi.org/10.1016/j.xgen.2021.100029), Cell Genomics
   - J Lawson, [...], S Varma, M Courtot, [The Data Use Ontology to streamline responsible access to human biomedical datasets](https://doi.org/10.1016/j.xgen.2021.100029), Cell Genomics
