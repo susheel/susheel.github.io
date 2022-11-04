@@ -6,26 +6,15 @@ layout: page
 
 <h3 style="text-align:center;">Susheel Varma, Ph.D MBA FBCS</h3>
 
-Susheel is a technologist (a.k.a possibilist) with 17+ years of experience 
-in leadership and delivering strategic and technology solutions for complex 
-trans-national clinical and life-science research.
+Susheel is a technologist (a.k.a possibilist) with 17+ years of experience in leadership and delivering strategic and technology solutions for complex transnational clinical and life-science research.
 
-In his current role as Chief Technology Officer (interim) & Director of Engineering at 
-[HDR UK](https://hdruk.ac.uk), he provides leadership and coordinates the confluent 
-needs of scientific, data and technology to deliver and operate a cohesive national 
-platform for health data research in the UK. He is a thought leader in the development 
-of Trusted Research Environments (TREs) and is able to pragmatically convene, build, 
-manage and empower a federated coalition of TRE providers nationally and internationally.
+He is currently  Head of AI and Data Science at the [Information Commissioner's Office](https://ico.org.uk). He leads a team of policy & technology advisors and legal teams to undertake regulatory policy research in emerging AI and Data Science areas. In addition, his team coordinates with cross-regulatory bodies to develop & implement regulatory policies and advise & formulate new government legislation. His team also provides deep policy-technical expertise for internal departments to help with regulatory supervision and assurance.
 
-In his previous roles at [EMBL-EBI](https://ebi.ac.uk) and [ELIXIR](https://ELIXIR-europe.org) 
-he managed and led an international portfolio of data science projects in 
-multiple jurisdictions and research infrastructures - [EMBL](https://www.embl.org/), 
-[ELIXIR](https://elixir-europe.org/), [EOSC](https://www.eosc.eu/) and [GA4GH](https://www.ga4gh.org/).
+In his previous role as Chief Technology Officer (interim) & Director of Engineering at [HDR UK](https://hdruk.ac.uk), he provides leadership and coordinates the confluent needs of scientific, data and technology to deliver and operate a cohesive national platform for health data research in the UK. He is a thought leader in the rapidly developing area of [Trusted Research Environments (TREs)](https://www.hdruk.ac.uk/access-to-health-data/trusted-research-environments/). He has been able to pragmatically convene, build, manage and empower a federated coalition of TRE providers nationally and internationally.
 
-He has a broad operating range with high-level thought leadership and in-depth 
-expertise in managing, developing, integrating, testing and maintaining innovative 
-technical solutions using distributed data, network and software technologies 
-across scientific and clinical domains.
+His previous roles at [EMBL-EBI](https://ebi.ac.uk) and [ELIXIR](https://ELIXIR-europe.org), he led an international portfolio of data science projects in multiple jurisdictions and research infrastructures - [EMBL](https://www.embl.org/), [ELIXIR](https://elixir-europe.org/), [EOSC](https://www.eosc.eu/) and [GA4GH](https://www.ga4gh.org/).
+
+He has a broad operating range with high-level thought leadership and in-depth expertise in managing, developing, integrating, testing and maintaining innovative technical solutions using distributed data, network and software technologies across scientific and clinical domains.
 
 ### Recent Works (See CV for more details)
 
