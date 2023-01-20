@@ -43,6 +43,9 @@ layout: compress
 
 </head>
 <body>
+    <!-- The following line controls and configures the Turnstile widget. -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAACFAbz1LeV7GmBZ" data-theme="light"></div>
+      <!-- end. -->
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
         {% if page.layout == "post" %}
             <div class="post">
