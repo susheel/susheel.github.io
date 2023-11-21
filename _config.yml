@@ -11,7 +11,8 @@ description: A Possibilist
 external-image: false
 picture: assets/images/profile.jpg
 
-# your site color theme, false to light theme
+# your site color theme, true for dark theme, 
+# false to light theme, auto to switch with system.
 dark-theme: auto
 
 # If you want to include your resume, set to true
@@ -68,14 +69,6 @@ authors:
 # normal = 560px / large = 810px
 width: normal
 
-# if you do/don't need pagination, toggle 'enabled' between true/false below
-pagination:
-  enabled: false
-  sort_reverse: true # display recent posts first
-  title: ":title" # Changing this will mess up the header display logic
-  per_page: 5
-  permalink: "/:num/" # pagination link that will be appended
-
 # if you don't need projects, comment the *projects* configs below
 # projects: true
 
@@ -116,7 +109,6 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jemoji
-  - jekyll-paginate-v2
 
 compress_html:
   ignore:
