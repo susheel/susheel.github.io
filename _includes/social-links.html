@@ -48,8 +48,14 @@
             <i class="fa-solid fa-virus-covid"></i>
         </a>
     {% endif %}
+
+    {% if site.empire %}
+        <a class="link" data-title="{{ site.idea }}" href="https://{{ site.idea }}" target="_blank"  rel="noopener">
+            <i class="fa-brands fa-empire"></i>
+        </a>
+    {% endif %}
     
-    {% if site.idea %}
+    {% if site.republic %}
         <a class="link" data-title="{{ site.idea }}" href="https://{{ site.idea }}" target="_blank"  rel="noopener">
             <i class="fa-brands fa-galactic-republic"></i>
         </a>
