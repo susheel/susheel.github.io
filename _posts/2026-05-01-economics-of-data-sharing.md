@@ -12,6 +12,8 @@ tag:
 - governance
 - NIH
 - economics
+image: /assets/images/blog/economics/cover.jpg
+headerImage: true
 description: "The economic case for public data infrastructure in the age of AI."
 ---
 

@@ -12,6 +12,8 @@ tag:
 - biomedical research
 - federation
 - Bermuda Principles
+image: /assets/images/blog/opentre-us/current-wars-v2.jpg
+headerImage: true
 description: "Why America's $48 billion biomedical research enterprise needs protocols, not more portals."
 ---
 
