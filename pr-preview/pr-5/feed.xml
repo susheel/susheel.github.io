@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://susheelvarma.com/pr-preview/pr-5/feed.xml" rel="self" type="application/atom+xml" /><link href="https://susheelvarma.com/pr-preview/pr-5/" rel="alternate" type="text/html" /><updated>2026-05-29T23:39:58+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/feed.xml</id><title type="html">Susheel Varma</title><subtitle>Chief Data Officer at Sage Bionetworks, leading science and data infrastructure for biomedical research across cancer, neurodegeneration, rare disease, and digital health.</subtitle><entry><title type="html">The Federation of Fragments</title><link href="https://susheelvarma.com/pr-preview/pr-5/federation-of-fragments/" rel="alternate" type="text/html" title="The Federation of Fragments" /><published>2026-05-19T09:00:00+00:00</published><updated>2026-05-19T09:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/federation-of-fragments</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/federation-of-fragments/"><![CDATA[<p><strong>What Wellcome’s Independent Review Tells Us About the HDRS</strong></p>
+
+<hr />
+
+<blockquote>
+  <p><strong>OpenTRE</strong></p>
+
+  <p>This is part of a series of papers arguing that the UK’s health data infrastructure should build protocols, not services. Companion papers covering the full technical case (<a href="https://opentre.org/blueprint.html">Blueprint</a>), a visual executive summary (<a href="https://opentre.org/sixpages.html">Six Pages</a>), the political and rights-based vision (<a href="https://opentre.org/manifesto.html">Manifesto</a>), an enforceable rights framework (<a href="https://opentre.org/rights.html">Bill of Rights</a>), a protocol specification (<a href="https://opentre.org/techspec.html">Technical Specification</a>), and an implementation roadmap (<a href="https://opentre.org/roadmap.html">Roadmap</a>) are available at <a href="https://opentre.org/">opentre.org</a>. For the original UK analysis, see <a href="https://opentre.org/uk-blog.html"><em>The Catalogue and the Crisis</em></a>.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="the-catalogue-returns">The Catalogue Returns</h2>
+
+<p>In 1831, Antonio Panizzi arrived at the British Museum to find 240,000 books and no catalogue. The collection was large. What it lacked was the connective tissue that would let anyone find anything.</p>
+
+<p>In May 2026, a team commissioned by Wellcome, Emrys Health, and Nesta published an independent review of the UK’s health data infrastructure and found, essentially, the same problem at national scale. The report calls it a “federation of fragments” (p.39): 200-plus hospital trusts, 30-plus EHR vendors, four devolved nations, world-class individual data assets, and no integration architecture connecting them. The components exist. The connective layer does not.</p>
+
+<p>This is the problem OpenTRE was designed to solve. And the report’s findings, reached independently through semi-structured interviews with 78 stakeholders across 36 organisations, validation workshops in all four nations, and six concrete user stories, now provide the evidence base.</p>
+
+<p>I helped build some of the systems this report reviews: the Health Data Research Gateway, the Five Safes data access request process, the TRE architecture standards. I left HDR UK in 2022. I published the OpenTRE argument in February 2026 at the Bermuda Principles 30th anniversary conference, using architectural reasoning, protocol design, and historical analogy. The Wellcome-commissioned team, working independently with different methodologies, arrived at the same diagnosis. That convergence matters, not because it validates my argument (though it does), but because two independent analyses using different methods reaching the same conclusion is the closest thing to replication that policy analysis offers.</p>
+
+<p>The plagiarism assessment is clean. OpenTRE is not cited in the report. The report is not derivative of OpenTRE. The methodologies are different, the theoretical frameworks are different, and the distinctive elements of each document (OpenTRE’s internet analogies and Bermuda mandates; the report’s data fabric evaluation and user stories) are absent from the other. The convergence is on the diagnosis, not the framing. That makes it stronger evidence than either document alone.</p>
+
+<hr />
+
+<h2 id="the-diagnosis-layer-by-layer">The Diagnosis, Layer by Layer</h2>
+
+<p>The report identifies five technology gaps across six infrastructure layers (Figure 6, p.40). Each of those gaps maps to specific layers in the OpenTRE protocol stack. The mapping is not forced. In several cases, the report uses language that is remarkably close to OpenTRE’s formulations without using OpenTRE’s terminology.</p>
+
+<h3 id="gap-1-no-minimum-information-standards">Gap 1: No Minimum Information Standards</h3>
+
+<p>The report finds that “no minimum information standards define what a research data asset should contain” (p.39). The same data types are represented differently across assets. Standard vocabularies like dm+d and SNOMED CT subsets are applied inconsistently. Provenance documentation ranges from comprehensive to entirely absent.</p>
+
+<p>This is OpenTRE’s Layers 5 and 6: Interoperable Data and Data Quality Protocols. The individual standards exist. OMOP is deployed at 42 UK organisations across 81 data assets. FHIR is a ratified standard. SNOMED CT is mandated. The problem is that nobody has composed them into a specification with conformance levels. The report confirms what OpenTRE argues: having standards is not the same as having a protocol that requires them.</p>
+
+<h3 id="gap-2-isolated-environments-without-integration">Gap 2: Isolated Environments Without Integration</h3>
+
+<p>The report’s strongest verdict lands here: asset integration is “the weakest layer relative to HDRS ambition” (p.42). Regional SDEs in England operate in isolation. Scottish Safe Havens lack automated federation. Welsh and Northern Irish infrastructure has no systematic connection to English or Scottish assets. The report states plainly that “no scalable integration architecture currently operates at population scale.”</p>
+
+<p>The report evaluates three architectural options for addressing this. Centralisation, where data moves to one place, faces the same governance obstacles that defeated NPfIT, care.data, and GPDPR: “previous UK attempts… encountered governance objections and public opposition, and a new centralised infrastructure may carry a similar inherent risk of failure” (p.42). Federated analytics, where computation moves to the data, works in specific contexts (DataSHIELD, OpenSAFELY, OMOP networks) but requires rigid schema conformance and excludes eyes-on data exploration. Data fabric, a metadata-driven approach that allows incremental adoption without a universal schema, has no mature UK implementation.</p>
+
+<p>The report recommends a hybrid: “federated mechanisms for discovery and feasibility queries where OMOP-standardised networks exist, while enabling combined analysis in TREs for use cases requiring eyes-on access” (p.44).</p>
+
+<p>This is the core of OpenTRE’s architectural argument. The seven-layer protocol stack is, in effect, the specification for what the report calls the “integration layer.” The report’s endorsement of a hybrid approach that builds on open standards rather than proprietary platforms, and defines “technical specifications that participating assets must meet” (p.44), is protocol-like thinking expressed in operational language.</p>
+
+<h3 id="gap-3-unreliable-data-linkage">Gap 3: Unreliable Data Linkage</h3>
+
+<p>No mechanism exists to identify which data sources hold records for a given individual. Linkage quality is inconsistent, unmeasured, and unmonitored. Researchers cannot quantify linkage error or compare results across studies. The report calls for accredited linkage providers meeting common standards rather than a single national service.</p>
+
+<p>This maps to OpenTRE’s Layers 1 through 3: Trust Infrastructure, Interoperable Identities, and Interoperable Metadata. The report’s call for “patient dataset resolution” parallels OpenTRE’s metadata discovery layer.</p>
+
+<h3 id="gap-4-variable-tre-capability">Gap 4: Variable TRE Capability</h3>
+
+<p>TRE quality varies substantially. Current accreditation through SATRE focuses on security but does not evaluate researcher needs: compute capability, statistical software availability, GPU access. The report notes a pharmaceutical company discovering after approval that a TRE lacked the specified statistical software, and an AI developer finding no GPU capability.</p>
+
+<p>This maps to OpenTRE’s Layer 7 (Interoperable Infrastructure) and the conformance testing framework. The report’s acknowledgement that security-only accreditation is insufficient validates OpenTRE’s broader conformance model, where accreditation must address usability alongside security.</p>
+
+<h3 id="gap-5-governance-as-the-key-barrier">Gap 5: Governance as the Key Barrier</h3>
+
+<p>And then we arrive at the gap that matters most, the one where convergence between the report and OpenTRE is closest.</p>
+
+<p>The report documents governance that is “fragmented, manual, and opaque” (p.47). Identical work is repeated across organisations. Timelines are unpredictable. A researcher applying to multiple data controllers faces “separate documentation in different formats, credentials not recognised across controllers, and institutional agreements requiring renegotiation” (p.48). Progress is tracked through “emails, conversations, and spreadsheets” (p.35). “Approvals in one system are not visible in another” (p.47). Governance operates “sequentially rather than in parallel” (p.36): a Data Access Committee can reject a study after it has received ethics and CAG approvals.</p>
+
+<p>One study reported 2.5 years from setup to data acquisition (p.36). The Safe People Registry, which should provide portable researcher credentials, is “under-invested and not universally recognised” (p.48).</p>
+
+<p>The report’s Opportunity 5 calls for a “unified digital governance layer” with three components: portable researcher credentials, reusable machine-readable agreement templates, and transparent project lifecycle tracking (p.48).</p>
+
+<p>Those three components map directly to OpenTRE’s Layer 4 (Interoperable Governance). Portable credentials map to W3C Verifiable Credentials and GA4GH Passports. Reusable machine-readable templates map to ODRL policies and Five Safes as code. Lifecycle tracking maps to the protocol ecosystem’s audit trail. The report arrived at this through empirical gap analysis, interviewing stakeholders who said governance is the biggest barrier. OpenTRE arrived at it through architectural reasoning, placing governance at the thin waist of an hourglass protocol stack. Different methods, same destination.</p>
+
+<hr />
+
+<h2 id="opportunity-5-the-governance-layer">Opportunity 5: The Governance Layer</h2>
+
+<p>Opportunity 5 deserves particular attention because it is the report’s closest match to what OpenTRE proposes, and because it is where the report’s own framing introduces a phrase worth taking seriously.</p>
+
+<p>The report calls for a transition from a “trust and contracts” model to a “technology guarantee” model (p.39). That phrase restates OpenTRE’s “protocols, not services” in language that policy audiences will find actionable. Trust and contracts is the bilateral-agreement world: every data access negotiated from scratch, every credential re-verified, every timeline uncertain. A technology guarantee is a world where the system enforces standards computationally: if your credentials meet the published specification, access is granted; if your TRE meets the conformance standard, it participates in the network.</p>
+
+<p>The report decomposes this into three components that map precisely to OpenTRE:</p>
+
+<p><strong>Portable credentials.</strong> The report documents that researcher credentials verified and accepted by one data controller are not recognised by the next. OpenTRE’s third mandate, credential portability, addresses this through GA4GH Passport-compatible infrastructure. A researcher approved by any conformant TRE should be recognised by all others.</p>
+
+<p><strong>Machine-readable agreement templates.</strong> The report calls for reusable templates that reduce the “bespoke burden” of over 100 individual negotiations (p.36-37). OpenTRE’s Layer 4 specifies how this works: ODRL policies encoding the Five Safes framework in a machine-readable format, so that access conditions can be matched computationally rather than negotiated bilaterally.</p>
+
+<p><strong>Lifecycle tracking.</strong> The report documents that project progress is tracked through emails and spreadsheets, with approvals in one system invisible to another. OpenTRE’s protocol ecosystem includes audit trails and transparency logs as architectural requirements, not optional features.</p>
+
+<p>Where the report and OpenTRE diverge is instructive. The report frames Opportunity 5 as a platform to be built, a “governance transaction platform” that HDRS would operate or commission. OpenTRE frames the same capability as a protocol to be adopted, a set of standards that any conformant TRE implements locally. The report’s Pilot 5 (a governance transaction platform) is a service. OpenTRE’s Layer 4 is a protocol. That distinction matters, because a centrally operated governance platform is one spending review away from defunding, while a protocol adopted across institutions survives political cycles.</p>
+
+<hr />
+
+<h2 id="the-clinical-trials-crisis">The Clinical Trials Crisis</h2>
+
+<p>The report deploys its most urgent data in the clinical trials section, and the numbers are damning.</p>
+
+<p>The UK has dropped from 4th to 8th globally for Phase III clinical trials (p.7). Industry-sponsored trial enrolment hit 19,000 participants in 2024/25, a seven-year low (p.7). The UK is the second slowest of 18 European countries for trial setup (p.7). One major pharmaceutical company reported that the UK is slower than all but one European country. Industry stakeholders describe the UK, consistently and on the record, as “an unreliable and unpredictable partner” (p.36, p.51).</p>
+
+<p>The government has set targets: 150-day trial setup by March 2026, quadrupled recruitment by 2029 (p.8). The economic stakes are substantial: the report estimates the HDRS could generate 3 billion pounds in gross value added, 485 million pounds in NHS revenue, and 26,000 jobs (p.8).</p>
+
+<p>These targets are not achievable with the current governance architecture. A pharmaceutical company running a post-authorisation safety study across all four nations faces separate applications to multiple controllers, each with different forms, fees, and timelines. Feasibility tools query administrative data but cannot assess clinical depth: staging, biomarkers, treatment lines. For oncology trials, up to 90% of patients identified through current methods do not meet detailed eligibility criteria at pre-screening (p.51). The DigiTrials system, the current state of the art, is capped at approximately ten trials per year.</p>
+
+<p>This is what bilateral governance costs. Every trial that takes 2.5 years to set up is a trial that runs in another country instead. Every credential that must be re-verified is a month lost. Every agreement negotiated from scratch is a quarter consumed by administration rather than recruitment.</p>
+
+<p>The six federation mandates address this directly. Credential portability means a trial sponsor’s credentials are verified once and recognised across all conformant TREs. Protocol conformance means every participating TRE meets published standards for data quality, compute capability, and governance interface. The federated-first presumption means trial data stays at the source institution, with only analytic queries and disclosure-checked results crossing boundaries. The patient rights dashboard means trial participants can see how their data contributed to the study. Reciprocal contribution means that institutions participating in trial infrastructure contribute back to the commons.</p>
+
+<p>The clinical trials crisis is not a tangential concern. It is the most visible symptom of governance fragmentation, the one that costs jobs, investment, and patient outcomes. If the HDRS addresses nothing else, it should address this.</p>
+
+<hr />
+
+<h2 id="what-the-hdrs-should-do-now">What the HDRS Should Do Now</h2>
+
+<p>The report provides the evidence. OpenTRE provides the architecture. Here is what the six federation mandates look like when updated with the report’s findings.</p>
+
+<h3 id="1-federated-first-presumption">1. Federated-first presumption</h3>
+
+<p>The report endorses this implicitly by rejecting centralisation as the primary strategy and recommending “federated mechanisms for discovery and feasibility queries” (p.44). The mandate is straightforward: all HDRS-funded analysis runs at the data source by default. Code travels to data. Only aggregated, disclosure-checked results return. The report’s own evaluation of the three architectural options makes this the least contentious mandate.</p>
+
+<h3 id="2-protocol-conformance">2. Protocol conformance</h3>
+
+<p>The report asks “what technical specifications for integration layer participation?” (p.44). OpenTRE’s protocol stack answers this: GA4GH Passports for identity, OMOP for common data models, ODRL for machine-readable governance, SATRE-plus for TRE accreditation. The mandate requires all HDRS-funded infrastructure to implement these open standards and pass a published conformance test suite. The report’s recommendation to “build on open standards rather than proprietary platforms” (p.44) is this mandate in policy language.</p>
+
+<h3 id="3-credential-portability">3. Credential portability</h3>
+
+<p>The report documents that portable credentials are the single most requested operational improvement across all stakeholder groups. The Safe People Registry exists but is “under-invested and not universally recognised” (p.48). The mandate: researcher credentials approved by any conformant TRE must be recognised by all others, via GA4GH Passport-compatible infrastructure. The report’s Opportunity 5 and OpenTRE’s third mandate converge on this without qualification.</p>
+
+<h3 id="4-reciprocal-contribution">4. Reciprocal contribution</h3>
+
+<p>The report’s System Gap 2 (p.50) identifies the incentive problem: data controllers bear costs and risks without reliable mechanisms for fair return. Options include revenue sharing from commercial access, investment in local data engineering, access to validated tools, and benchmarking data. The mandate: every organisation that queries the federation contributes data, compute, or governance capacity back to the commons. The report’s “value-return framework” is the operational expression of this principle.</p>
+
+<h3 id="5-patient-rights-dashboard">5. Patient rights dashboard</h3>
+
+<p>The report’s System Gap 3 (p.50) confirms that public trust is conditional and fragile. The National Data Opt-Out stands at 5.4%, spiking during trust crises. The report recommends “public-facing dashboards, searchable registries of approved projects, and feedback mechanisms that demonstrably influence decisions” (p.50) and cites Estonia’s X-Road, where citizens can see exactly who accessed their data. The mandate: every data subject sees, in plain language, who accessed their data, for what purpose, and what was found. The report provides the evidence that this is not optional.</p>
+
+<h3 id="6-patient-collective-voice">6. Patient collective voice</h3>
+
+<p>The report recommends “standing governance bodies with patient representation” (p.50) and its two PPIE sessions documented public demand for genuine decision-making authority, not merely transparency. The mandate: patient populations participate in federation governance through structured mechanisms, such as data trusts and standing citizens’ panels, with genuine decision-making authority. The report’s framing and OpenTRE’s mandate are aligned.</p>
+
+<hr />
+
+<h2 id="where-the-report-gets-it-wrong">Where the Report Gets It Wrong</h2>
+
+<p>Independent validation does not mean uncritical endorsement. The report’s own risk section deserves engagement, and there are points where its framing diverges from what the evidence supports.</p>
+
+<h3 id="the-service-framing">The service framing</h3>
+
+<p>The report consistently frames HDRS as a “service” with “customers” and “service level commitments.” OpenTRE frames the solution as a “protocol” with “participants.” These are fundamentally different institutional designs.</p>
+
+<p>A service model implies a central provider delivering capability to consumers. A protocol model implies a shared set of rules that distributed participants implement locally. The report acknowledges that centralisation has repeatedly failed in UK health data, and then proposes a service architecture that structurally resembles centralisation. Opportunity 5 as a “governance transaction platform” operated by HDRS is a service. Layer 4 as a machine-readable governance protocol adopted by every conformant TRE is a protocol. The first is one spending review away from defunding. The second survives political cycles.</p>
+
+<p>The report’s service framing is understandable. Wellcome, HDRS, and the organisations interviewed think in service terms. The language is familiar to policymakers. But service thinking is what produced NPfIT, care.data, GPDPR, and the FDP. Protocol thinking is what produced the internet, email, and the OHDSI network. The UK’s 600 million pounds should fund the latter.</p>
+
+<h3 id="the-central-tre-option">The central TRE option</h3>
+
+<p>The report evaluates a “central TRE” as a viable option (p.46-47), where HDRS would “operate an environment for deploying TREs.” This reintroduces a single point of failure and vendor dependency. The British Library ransomware attack of October 2023, which took digital services offline for months, demonstrated what happens when everything is concentrated in one infrastructure. A protocol-based ecosystem distributes that risk.</p>
+
+<p>There is a legitimate role for a reference implementation, a central TRE that demonstrates conformance and provides a fallback for institutions that lack local capability. But a reference implementation is different from a mandated central service. The first serves the network. The second requires the network to serve it.</p>
+
+<h3 id="the-technology-guarantee-ambiguity">The “technology guarantee” ambiguity</h3>
+
+<p>The report’s phrase “technology guarantee” is powerful but ambiguous. It could mean a protocol guarantee: if your system speaks the standard, it interoperates. Or it could mean a service guarantee: HDRS guarantees a certain level of capability. The first is distributed and resilient. The second is centralised and fragile.</p>
+
+<p>OpenTRE’s “protocols, not services” framing resolves this ambiguity. The guarantee should be that any conformant TRE can participate in the federation, not that HDRS operates the federation centrally. The guarantee lives in the protocol, not in the institution.</p>
+
+<h3 id="adoption-risk">Adoption risk</h3>
+
+<p>The report’s most honest acknowledgement is that no mature UK example of a data fabric architecture exists at scale. This is real. OpenTRE’s protocol stack is a design, not a deployed system. The gap between specification and implementation is where most health data programmes have failed.</p>
+
+<p>The HDRS should address this through what OpenTRE calls success-based funding: funding institutions specifically to achieve protocol compliance, with payment tied to passing interoperability tests, not to shipping data upstream. The OHDSI network offers a model. Institutions bear the upfront cost of mapping to the common data model, then participate in every subsequent federated study at near-zero marginal cost. The UK needs Mapping-as-a-Service teams that do the heavy lifting for under-resourced NHS trusts.</p>
+
+<hr />
+
+<h2 id="convergence-as-evidence">Convergence as Evidence</h2>
+
+<p>The Wellcome-commissioned report is the most thorough independent assessment of the UK’s health data infrastructure published to date. It documents, with empirical rigour, the problems that OpenTRE was designed to address. The convergence between two independent analyses, one based on 78 stakeholder interviews and six user stories, the other based on architectural reasoning and protocol design, strengthens both.</p>
+
+<p>The report provides what OpenTRE lacked: a comprehensive evidence base grounded in stakeholder testimony. OpenTRE provides what the report lacks: a prescriptive protocol architecture with published conformance levels, named standards, and an implementation pathway.</p>
+
+<p>Together, they make a case that is difficult to dismiss. The UK’s health data problem is not technology. It is the absence of shared rules. The components exist. The connective layer does not. Two independent teams have now said so.</p>
+
+<p>The question is whether the HDRS will invest its 600 million pounds in writing the cataloguing rules, or in building another library.</p>
+
+<hr />
+
+<p><strong>Write the cataloguing rules.</strong></p>
+
+<p><a href="https://opentre.org">opentre.org</a></p>
+
+<hr />
+
+<h3 id="about-the-author">About the Author</h3>
+
+<p><em><a href="https://susheelvarma.com">Susheel Varma</a> is Chief Data Officer at <a href="https://sagebionetworks.org">Sage Bionetworks</a> and was previously Chief Technology Officer at <a href="https://hdruk.ac.uk/">Health Data Research UK</a>, where he co-authored the TRE Green Paper and Building Trusted Research Environments guidance. The protocol-level arguments are vendor-neutral by design and not endorsed by any one organisation.</em></p>
+
+<p><em>This post refers to: Emrys Health and Nesta (2025/2026). Health Data Research Service (HDRS) Digital Ecosystem Analysis, Final Report. Wellcome Open Research.</em></p>
+
+<p><em>For the companion reading guide, see <a href="https://opentre.org/blog-hdrs-reading-guide.html">What Wellcome Found When It Audited the UK’s Health Data Infrastructure</a>. For the technology guarantee argument, see <a href="https://opentre.org/blog-hdrs-technology-guarantee.html">The Technology Guarantee</a>.</em></p>
+
+<hr />
+
+<p>Copyright 2026 Susheel Varma. Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>]]></content><author><name>susheel</name></author><category term="blog" /><category term="health data" /><category term="governance" /><category term="HDRS" /><category term="TRE" /><category term="open science" /><category term="federation" /><summary type="html"><![CDATA[What Wellcome's Independent Review tells us about the HDRS and why the UK's health data infrastructure needs protocols, not services.]]></summary></entry><entry><title type="html">The Chemist Who Did Not Live to See the Nobel Prize</title><link href="https://susheelvarma.com/pr-preview/pr-5/economics-of-data-sharing/" rel="alternate" type="text/html" title="The Chemist Who Did Not Live to See the Nobel Prize" /><published>2026-05-01T09:00:00+00:00</published><updated>2026-05-01T09:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/economics-of-data-sharing</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/economics-of-data-sharing/"><![CDATA[<p><strong>The economic case for public data infrastructure in the age of AI</strong></p>
+
+<hr />
+
+<p>The database that won the 2024 Nobel Prize in Chemistry started with seven entries and a man who would not live to see the eighth.</p>
+
+<p>In October 1971, Walter Hamilton at Brookhaven National Laboratory established the Protein Data Bank [1]. It held seven crystal structures. Hamilton had championed the idea at crystallography meetings throughout the late 1960s, arguing that structural data was too valuable to sit in individual labs. He died in 1973, at 41. He never saw what his archive would become.</p>
+
+<p>The accumulation was patient. Seven structures grew to 23 by 1976, a few hundred by the late 1980s, 10,000 by 2000, more than 170,000 by 2020 [1]. Each was painstakingly determined by X-ray crystallography or NMR, deposited voluntarily, made freely available. Fifty-three years of quiet, publicly funded work.</p>
+
+<p>Then the payoff. Since 1994, a biennial competition called the Critical Assessment of protein Structure Prediction (CASP) had benchmarked the field, judging computational predictions against experimentally determined PDB structures [46]. In 2020, DeepMind’s AlphaFold 2 won CASP14 with a median accuracy score of 92.4 out of 100, solving the problem outright, trained on those 170,000+ structures [2]. In 2021, DeepMind partnered with EMBL-EBI to release predictions for over 200 million proteins under a CC-BY 4.0 licence [3]. In October 2024, Demis Hassabis and John Jumper received the Nobel Prize in Chemistry [4].</p>
+
+<p>Seven structures to a Nobel Prize. The AI revolution in structural biology was built entirely on decades of publicly funded, openly shared data.</p>
+
+<p>EMBL-EBI’s latest impact assessment shows a 73-to-1 return on investment from open biological data infrastructure [5]. That substrate is now under threat. Every AI company training models on PubMed, ClinVar, GenBank, the cancer atlases, and the imaging archives pays nothing for it. The institutions that produce this data face budget pressures that could erode the foundation on which the entire AI-in-health enterprise depends.</p>
+
+<hr />
+
+<h2 id="one-per-cent-of-the-budget-all-of-the-drugs">One Per Cent of the Budget, All of the Drugs</h2>
+
+<p>The numbers for public biomedical research are not speculative. They are the most thoroughly documented return on public investment in the history of American science.</p>
+
+<p>The National Institutes of Health contributed to published research associated with 354 of 356 drugs approved by the FDA between 2010 and 2019 [6]. That is 99.4%. Not a rounding error. Virtually every drug your doctor prescribes traces back to publicly funded science. Every dollar invested in NIH research generated $2.56 in economic activity in FY2024, supporting 407,782 jobs and producing $94.58 billion in new economic output across all fifty states [7].</p>
+
+<p>The $3.8 billion Human Genome Project generated an estimated $965 billion in economic activity, a return of roughly 65-to-1 [8]. That return did not occur due to a proprietary platform. It happened because of the Bermuda Principles, a one-page agreement adopted in February 1996 requiring all sequence data to be released within 24 hours [9]. No embargoes. No patents on raw sequence. No permission required. Open protocols, funder-enforced. The Bermuda Principles cost essentially nothing to implement and generated nearly a trillion dollars.</p>
+
+<p>The pattern holds internationally. EMBL-EBI, Europe’s primary open biological data infrastructure, spends GBP 75 million a year to run its data services and generates an estimated GBP 5.5 billion in value, a return of roughly 73-to-1 at the midpoint of independent estimates. Half a million researchers across 190 countries depend on it. These are conservative figures: the assessors excluded secondary users entirely and noted the true user base may be double the headline count [5].</p>
+
+<p>Consider three therapies that define modern medicine.</p>
+
+<p>The COVID-19 mRNA vaccines were developed in record time, but they rested on decades of NIH-funded basic research stretching back to the late 1980s. Katalin Kariko and Drew Weissman’s work on modified nucleosides, funded in part by NIH grants, made mRNA vaccines viable. They received the 2023 Nobel Prize [10]. When the SARS-CoV-2 genome was sequenced in January 2020, researchers at NIH’s Vaccine Research Centre applied their prefusion-stabilising approach to the spike protein and partnered with Moderna within 24 hours [11]. The science was ready because the funding had been patient and focused on the long term.</p>
+
+<p>GLP-1 receptor agonists, the drug class behind semaglutide (Ozempic, Wegovy) and tirzepatide (Mounjaro), trace to NIH-funded research on Gila monster venom in the early 1980s. Dr Jean-Pierre Raufman discovered unusual molecules in the venom that affected the pancreas. This led to the identification of exendin-4 [12], which became the foundation for what is now projected to be a $100 billion annual drug class by 2030 [13]. The gap between Raufman’s Gila monster research and Ozempic spans more than forty years. No venture capitalist would have funded that timeline.</p>
+
+<p>CAR-T cell therapy, among the most transformative cancer treatments of the past decade, emerged from NCI-funded basic immunology research beginning in the 1970s. Steven Rosenberg’s patient work at the National Cancer Institute, from early T-cell activation experiments to the first successful CAR-T treatment for lymphoma in 2009, spanned roughly 40 years of sustained public investment [14]. That patient remains cancer-free.</p>
+
+<p>The NIH budget of $48 billion represents approximately 1% of total US healthcare expenditure [15]. One per cent of the spend, underwriting 99.4% of the drug pipeline.</p>
+
+<hr />
+
+<h2 id="when-scientists-are-told-not-to-say-mrna">When Scientists Are Told Not to Say “mRNA”</h2>
+
+<p>This is not a uniquely American problem, but the United States illustrates it most starkly. The NIH FY2026 budget proposal would reduce funding by approximately 40%, to an inflation-adjusted level billions of dollars lower than at any point in the past twenty-five years [16]. Early FY2026 data showed grant award rates collapsed by 54% compared to the previous year [17]. A proposed indirect cost cap of 15%, far below most institutions’ negotiated rates of 40-60%, would have withdrawn roughly $4 billion annually from research infrastructure [18]. A court ruled the cap unlawful, but the disruption to institutional planning was immediate. In the UK, UKRI faces real-terms funding pressure after years of flat settlements. Across the EU, the next Horizon framework is being shaped by competing demands for AI investment and defence spending. Basic research funding is under strain everywhere.</p>
+
+<p>Reports have emerged of researchers being advised to avoid certain terminology in grant applications, including references to mRNA vaccine technology [19], the same technology that produced the most significant public health intervention of the century. When the language of science is shaped by funding climate rather than evidence, something has gone wrong.</p>
+
+<p>The proximate causes of these funding pressures vary by country: fiscal consolidation, shifting political priorities, competing demands from defence and industrial strategy. I am not arguing that AI hype caused the cuts. But I am arguing that the AI narrative functions as a permission structure. It makes the cuts seem less dangerous by implying that private-sector AI investment will pick up the slack. It lowers the perceived cost of losing public research capacity. When a politician can gesture at $725 billion in Big Tech AI capital expenditure and say “the private sector has this covered,” it becomes easier to cut $20 billion from basic research.</p>
+
+<p>The effect is the same as the 2005 weather data bill [47], just achieved differently. Not a single piece of legislation to privatise public data, but a slow defunding of the institutions that produce it, accompanied by a vague assurance that AI will fill the gap.</p>
+
+<p>It will not.</p>
+
+<hr />
+
+<h2 id="how-many-ai-drugs-has-the-fda-approved">How Many AI Drugs Has the FDA Approved?</h2>
+
+<p>I should be honest about where AI works. I run data platforms for a living. I see the tooling every day.</p>
+
+<p>AlphaFold is a genuine scientific revolution, proven at CASP14, the open benchmarking competition that has tested protein structure prediction since 1994 [46]. It has predicted structures for over 214 million proteins, been cited in more than 35,000 papers [20], and won the 2024 Nobel Prize in Chemistry [4]. AlphaFold researchers see a 40% increase in their submission of novel experimental protein structures [21]. It accelerates science. It does not replace it. And it was trained on the Protein Data Bank, which contains decades of experimentally determined structures funded by NIH and equivalent agencies worldwide. Without fifty years of publicly funded structural biology, and without the open competition framework that let researchers benchmark against shared data, AlphaFold would have had nothing to learn from. AlphaFold is not an outlier. Across the life sciences, 42% of researchers who use EMBL-EBI’s open data resources report training or evaluating AI and ML models on that data. As one developer of a machine-learning tool for cryo-EM put it: “Without EBI, there would be no ModelAngelo” [5]. Cut the public data infrastructure, and you cut the AI that depends on it.</p>
+
+<p>AI weather forecasting has been transformative. Google DeepMind’s GenCast outperforms the European Centre’s ensemble forecast on 97.2% of verification targets [22]. In December 2025, NOAA deployed three AI-driven global weather models into operational use [23]. This is real progress. It was also trained on ERA5, whose backbone is physics-based numerical weather prediction that has been developed over decades with public funding.</p>
+
+<p>In drug discovery, AI-discovered molecules achieve 80-90% success rates in Phase I trials, well above the historical average of 52% [24]. AI produces safer molecules. That matters.</p>
+
+<p>Now the other side of the ledger.</p>
+
+<p>Zero AI-discovered drugs have received FDA approval. Over 200 candidates are in clinical development [25]. None has completed the regulatory process. The most advanced, Insilico Medicine’s rentosertib, has completed Phase IIa [26]. It is years from approval, if it gets there at all.</p>
+
+<p>Phase II success rates for AI-discovered drugs, approximately 40%, are indistinguishable from historical averages [24] [25]. Phase II tests efficacy: whether the drug actually treats the disease. This is where most programmes fail, and AI has not cracked it. AI produces molecules that are safe. It has not yet been demonstrated that it can produce molecules that work.</p>
+
+<p>IBM spent over $4 billion on Watson Health, employed 7,000 staff at its peak, and sold the unit for approximately $1 billion [27]. Watson for Oncology recommended bevacizumab for a patient with severe bleeding, a potentially fatal error [28]. MD Anderson spent $62.1 million on a Watson-powered system over four years without treating a single patient [29].</p>
+
+<p>The Epic Sepsis Model, deployed across hundreds of hospitals serving 54% of US patients, missed 67% of sepsis cases in external validation, with an AUC of 0.63, compared with the internally reported 0.76-0.83 [30]. A follow-up study found that its predictive accuracy dropped to 53% when restricted to data collected before a blood culture was ordered [31]. The model was largely cueing on clinician suspicion rather than providing early warning.</p>
+
+<p>Google created and disbanded its Health division in three years [32]. Amazon shut down Haven, Amazon Care, and Halo within roughly two years each [33]. The Big Tech health AI graveyard is large and expensive.</p>
+
+<p>Daron Acemoglu, the 2024 Nobel Laureate in Economics, estimates AI’s impact on GDP at 0.53-0.93% over a decade [34]. Goldman Sachs titled a 2024 report “Gen AI: Too Much Spend, Too Little Benefit?” [35]. The gap between Acemoglu’s evidence-based estimates and industry projections of 7-10% GDP growth is approximately one order of magnitude. Someone is wrong.</p>
+
+<hr />
+
+<h2 id="the-ietf-runs-the-internet-on-14-million-a-year">The IETF Runs the Internet on $14 Million a Year</h2>
+
+<p>The argument against cutting NIH is not merely scientific. It is economic, and the comparison is lopsided.</p>
+
+<p>Microsoft, Alphabet, Meta, and Amazon committed over $320 billion in AI capital expenditure in 2025, with plans for up to $725 billion in 2026 [36]. NIH’s entire annual budget is $48 billion [15]. The AI sector spends 15 times the NIH budget each year on infrastructure that has yet to produce a single approved drug.</p>
+
+<p>A single ChatGPT query consumes approximately 0.3-0.42 watt-hours of electricity [37]. At one billion daily queries, that is 310 GWh annually, enough to power 29,000 homes. Training GPT-4 consumed an estimated 50 GWh, enough to power San Francisco for three days [38]. The Stargate initiative aims to spend $500 billion on building data centres that may each require 5 GW of power, more than New Hampshire’s total demand [36].</p>
+
+<p>Now consider the cost of open data infrastructure, and the returns it generates.</p>
+
+<p>The cleanest precedent is GPS. On 1 September 1983, Soviet fighters shot down Korean Air Lines Flight 007 after it strayed into restricted airspace. 269 people died. Within weeks, Ronald Reagan announced that GPS, then a military system, would be made available for civilian use. On 1 May 2000, Bill Clinton ended Selective Availability, improving civilian accuracy tenfold [39]. The signal is free: no subscription, no API key, roughly $2 billion a year to maintain. In 2019, NIST and RTI International estimated that GPS had generated $1.4 trillion in cumulative economic benefits to the US private sector since the 1980s [40]. Ninety per cent of that value accrued after 2010. Loss of GPS would cost approximately $1 billion per day. Every ride-hailing app, precision agriculture system, and supply chain tracker depends on it.</p>
+
+<p>GPS is what happens when a government builds infrastructure as a protocol rather than a platform: a public investment generating orders-of-magnitude private-sector returns, invisible to its beneficiaries, and perpetually at risk of restriction or defunding because it looks like a cost centre.</p>
+
+<p>The same pattern holds across every open infrastructure that has endured. The IETF, the body that governs the protocols running the entire internet, operates on roughly $14 million a year [41]. TCP/IP has survived seven US presidents. The Bermuda Principles fit on a single page and generated $965 billion in economic activity [8] [9]. OHDSI, which runs federated analytics on 974 million patient records from 544 data sources in 88 countries, operates with minimal central funding and no central data warehouse [42]. GenBank has survived nine NIH directors over 44 years.</p>
+
+<p>These are not platforms. They are protocols: open standards, funder-enforced, with decentralised implementation. They cost orders of magnitude less than platforms, and they last orders of magnitude longer. GPS, the IETF, GenBank: each was built with public money, each generates returns its funders never imagined, and each faces periodic threats from people who see only the cost. All of Us has already seen its funding swing from $541 million to $158 million, a 71% reduction [43]. N3C runs on a $60 million Palantir contract [44]. When the contract ends, the pipelines are stranded. But GenBank endures, and GPS endures, because they function as infrastructure, not as programme-specific portals.</p>
+
+<p>Every dollar NIH has invested in N3C, All of Us and dozens of other platforms is at risk when budgets shift or vendors change. Protocols protect those investments by making them interoperable. The data, the governance rules, and the researcher’s credentials survive even if the platform does not.</p>
+
+<p>I should know. As Chief Data Officer at Sage Bionetworks, I run one of those platforms. Synapse hosts over 4 petabytes of data for major NIH programmes. Through the DREAM Challenges, we have hosted more than 60 open benchmarking competitions across cancer, neurodegeneration, and drug discovery, the same open-competition model that produced AlphaFold applied to the diseases that matter most. I am proud of what we have built. And I know that without the protocol layer connecting our platform to others, every one of those data silos is a DC power station lighting up one city block, while the grid remains unbuilt.</p>
+
+<hr />
+
+<h2 id="the-most-dangerous-cut-is-the-one-you-cannot-see">The Most Dangerous Cut Is the One You Cannot See</h2>
+
+<p>Here is what is happening, stated plainly. Governments around the world are allowing pressure to build on the research infrastructure that produced 99.4% of approved drugs, that generated $2.56 for every dollar invested, that enabled mRNA vaccines, CAR-T therapy, and GLP-1 agonists, while directing investment toward an AI buildout that has produced zero approved drugs, that costs fifteen times as much, and whose most prominent health ventures have been expensive failures.</p>
+
+<p>This is not a technology debate. It is an economics question with a clear answer.</p>
+
+<p>The Protein Data Bank started with seven structures because one chemist believed data was too valuable to hoard. Fifty-three years later, a Nobel Prize proved him right. The parallel to today is exact: open data built the AI. Defund the data, and you defund the AI.</p>
+
+<p>Biomedical research data does not yet have the public visibility it deserves. Most people do not know that their doctor’s prescriptions trace back to NIH-funded science. They do not know that Ozempic started with a Gila monster. They do not know that the mRNA technology saving lives during COVID was built on thirty years of patient, publicly funded work that no private investor would have underwritten.</p>
+
+<p>The genomics bubble of 1998-2003 offers a precise precedent. Celera Genomics peaked at $247 per share in March 2000 and crashed to $14 by January 2003, a 94% decline [45]. The 74 companies in the genomics sector traded at an average of 25% of their highs. The publicly funded Human Genome Project outlasted them all. Celera’s proprietary database could not compete with GenBank, which was free. Open data won.</p>
+
+<p>The current AI investment cycle will follow the same pattern. Not because AI is worthless, but because the hype exceeds the evidence by an order of magnitude, and the evidence sits on a foundation of public science that is being defunded even as the hype accelerates. When the cycle corrects, and it will, the companies that survive will be those that built on the public data commons. If that commons has been gutted, there will be nothing to build on.</p>
+
+<p>The $3.8 billion Human Genome Project generated $965 billion because the Bermuda Principles made the data open. The $48 billion NIH budget underwrites 99.4% of approved drugs because the science is public. The IETF’s $14 million a year helps maintain the protocols used by billions because its standards are open.</p>
+
+<p>Protocols, not platforms. Open infrastructure, not proprietary extraction. Patient public investment, not speculative private capture. These are not ideological preferences. They are what the evidence shows.</p>
+
+<p>Somewhere right now, a graduate student funded by an NIH training grant is running an experiment that will not produce a clinical result for twenty years. That is not a waste. That is how mRNA vaccines happen. That is how CAR-T therapy happens. That is how a lizard in the Arizona desert becomes the most important drug class of the decade.</p>
+
+<p>Cut her funding, and we will never know what we lost.</p>
+
+<hr />
+
+<p><em>Susheel Varma is Chief Data Officer at Sage Bionetworks and the author of <a href="https://www.linkedin.com/pulse/copy-how-six-pages-built-america-why-biomedical-research-varma-lsdze/">The Current Wars of Biomedical Data</a>. He was previously CTO at Health Data Research UK, where he co-authored national TRE guidance, and Head of AI and Data Science at the UK Information Commissioner’s Office.</em></p>
+
+<h2 id="references">References</h2>
+
+<p>[1] Protein Data Bank. “History.” RCSB PDB. <a href="https://www.rcsb.org/pages/about-us/history">https://www.rcsb.org/pages/about-us/history</a></p>
+
+<p>[2] Jumper, J. et al. (2021). “Highly accurate protein structure prediction with AlphaFold.” <em>Nature</em>, 596, 583-589.</p>
+
+<p>[3] Varadi, M. et al. (2022). “AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space with high-accuracy models.” <em>Nucleic Acids Research</em>, 50(D1), D439-D444.</p>
+
+<p>[4] NobelPrize.org. “The Nobel Prize in Chemistry 2024.” <a href="https://www.nobelprize.org/prizes/chemistry/2024/summary/">https://www.nobelprize.org/prizes/chemistry/2024/summary/</a></p>
+
+<p>[5] Frontier Economics (2026). “Open Data: The Value and Impact of EMBL-EBI Data Resources.” Report commissioned by EMBL-EBI.</p>
+
+<p>[6] Cleary, E.G. et al. (2018). “Contribution of NIH funding to new drug approvals 2010-2016.” <em>PNAS</em>, 115(10), 2329-2334. Extended analysis through 2019 by same group.</p>
+
+<p>[7] United for Medical Research (2024). “NIH’s Role in Sustaining the U.S. Economy: FY2024.”</p>
+
+<p>[8] Battelle Technology Partnership Practice (2011). “The Impact of Genomics on the U.S. Economy.”</p>
+
+<p>[9] Maxson Jones, K., Ankeny, R.A. &amp; Cook-Deegan, R. (2018). “The Bermuda Triangle: the pragmatics, policies, and principles for data sharing in the history of the Human Genome Project.” <em>Journal of the History of Biology</em>, 51(4), 693-805.</p>
+
+<p>[10] NobelPrize.org. “The Nobel Prize in Physiology or Medicine 2023.” <a href="https://www.nobelprize.org/prizes/medicine/2023/summary/">https://www.nobelprize.org/prizes/medicine/2023/summary/</a></p>
+
+<p>[11] Corbett, K.S. et al. (2020). “SARS-CoV-2 mRNA vaccine design enabled by prototype pathogen preparedness.” <em>Nature</em>, 586, 567-571.</p>
+
+<p>[12] Eng, J. et al. (1992). “Isolation and characterization of exendin-4, an exendin-3 analogue, from Heloderma suspectum venom.” <em>Journal of Biological Chemistry</em>, 267(11), 7402-7405.</p>
+
+<p>[13] Goldman Sachs Research (2024). “The GLP-1/Obesity Market.”</p>
+
+<p>[14] Rosenberg, S.A. &amp; Restifo, N.P. (2015). “Adoptive cell transfer as personalized immunotherapy for human cancer.” <em>Science</em>, 348(6230), 62-68.</p>
+
+<p>[15] Congressional Research Service (2025). “National Institutes of Health (NIH) Funding: FY1996-FY2026.”</p>
+
+<p>[16] Nature (2025). “NIH budget cuts: what researchers need to know.”</p>
+
+<p>[17] Lauer, M. (2025). NIH Office of Portfolio Analysis and Reporting (OPERA) data, as reported in <em>Nature</em>.</p>
+
+<p>[18] Nature (2025). “US indirect-cost cap for research grants ruled unlawful.”</p>
+
+<p>[19] Science (2025). “Researchers told to avoid certain terms in NIH applications.”</p>
+
+<p>[20] Google DeepMind (2024). “AlphaFold impact.” <a href="https://deepmind.google/technologies/alphafold/">https://deepmind.google/technologies/alphafold/</a></p>
+
+<p>[21] Callaway, E. (2024). “AlphaFold is already changing the world.” <em>Nature</em>.</p>
+
+<p>[22] Price, I. et al. (2025). “Probabilistic weather forecasting with machine learning.” <em>Nature</em>, 637, 84-90.</p>
+
+<p>[23] NOAA (2025). “NOAA deploys AI-driven global weather models.”</p>
+
+<p>[24] Boston Consulting Group (2024). “AI-Driven Drug Discovery: Early Clinical Signals.”</p>
+
+<p>[25] Jayatunga, M.K.P. et al. (2024). “How successful are AI-discovered drugs in clinical trials?” <em>Nature Biotechnology</em> (commentary).</p>
+
+<p>[26] Insilico Medicine press releases (2024-2025). Rentosertib (ISM001-055) Phase IIa clinical trial results.</p>
+
+<p>[27] Strickland, E. (2019). “How IBM Watson Overpromised and Underdelivered on AI Health Care.” <em>IEEE Spectrum</em>.</p>
+
+<p>[28] Ross, C. &amp; Swetlitz, I. (2018). “IBM’s Watson supercomputer recommended ‘unsafe and incorrect’ cancer treatments, internal documents show.” <em>STAT News</em>.</p>
+
+<p>[29] Herper, M. (2017). “MD Anderson Benches IBM Watson In Setback For Artificial Intelligence In Medicine.” <em>Forbes</em>.</p>
+
+<p>[30] Wong, A. et al. (2021). “External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients.” <em>JAMA Internal Medicine</em>, 181(8), 1065-1070.</p>
+
+<p>[31] Lyons, P.G. et al. (2022). “Factors associated with variability in the performance of a proprietary sepsis prediction model across hospitals.” <em>Critical Care Medicine</em>.</p>
+
+<p>[32] Wired (2021). “Google Health Is Shutting Down.”</p>
+
+<p>[33] CNBC (2023). “Amazon is shutting down Amazon Care.”</p>
+
+<p>[34] Acemoglu, D. (2024). “The Simple Macroeconomics of AI.” NBER Working Paper 32487.</p>
+
+<p>[35] Goldman Sachs (2024). “Gen AI: Too Much Spend, Too Little Benefit?”</p>
+
+<p>[36] Bloomberg (2025). Company earnings reports and capital expenditure guidance for Microsoft, Alphabet, Meta, and Amazon.</p>
+
+<p>[37] IEA (2024). “Electricity 2024: Analysis and forecast to 2026.”</p>
+
+<p>[38] Epoch AI (2024). “Estimating training compute of notable ML models.”</p>
+
+<p>[39] GPS.gov. “Selective Availability.”</p>
+
+<p>[40] RTI International for NIST (2019). “Economic Benefits of the Global Positioning System to the U.S. Private Sector.”</p>
+
+<p>[41] IETF Annual Report / Internet Society (ISOC) financial statements.</p>
+
+<p>[42] OHDSI.org. “The OHDSI Network” (2025). <a href="https://www.ohdsi.org/">https://www.ohdsi.org/</a></p>
+
+<p>[43] Science (2025). “All of Us funding slashed.”</p>
+
+<p>[44] NCATS reporting on the N3C Palantir contract.</p>
+
+<p>[45] Mardis, E.R. (2011). “A decade’s perspective on DNA sequencing technology.” <em>Nature</em>, 470, 198-203.</p>
+
+<p>[46] Moult, J. et al. (1995). “A large-scale experiment to assess protein structure prediction methods.” <em>Proteins</em>, 23(3), ii-v.</p>
+
+<p>[47] S. 786, “National Weather Service Duties Act of 2005,” 109th Congress.</p>]]></content><author><name>susheel</name></author><category term="blog" /><category term="open science" /><category term="health data" /><category term="AI" /><category term="biomedical research" /><category term="governance" /><category term="NIH" /><category term="economics" /><summary type="html"><![CDATA[The economic case for public data infrastructure in the age of AI.]]></summary></entry><entry><title type="html">Artificial Stupidity</title><link href="https://susheelvarma.com/pr-preview/pr-5/artificial-stupidity/" rel="alternate" type="text/html" title="Artificial Stupidity" /><published>2026-03-27T09:00:00+00:00</published><updated>2026-03-27T09:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/artificial-stupidity</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/artificial-stupidity/"><![CDATA[<p><em>Why the most important thing we can teach AI is how to say “I don’t know”</em></p>
+
+<hr />
+
+<p>In 2008, a cell biologist named Martin Schwartz wrote a one-page essay that has now been read by over a million people. In it, he tells the story of a brilliant former student who dropped out of a prestigious PhD programme and retrained in an entirely different field. When he asked her why, she said something that has stayed with me ever since I first read it: “It made me feel stupid.”</p>
+
+<p>Schwartz did not see this as a tragedy. He saw it as a misunderstanding, one that science itself has failed to correct. During his own PhD, he had taken a problem to Henry Taube, a faculty member who would go on to win the Nobel Prize. Taube did not know the answer. Schwartz was a third-year graduate student. If Taube did not know, nobody did.</p>
+
+<p>“That’s when it hit me,” Schwartz wrote. “Nobody did. That’s why it was a research problem.”</p>
+
+<p>He went on to make a distinction I think about constantly. There are two kinds of stupidity. <em>Relative stupidity</em> is not knowing what others already know, a gap you can close with effort. <em>Absolute stupidity</em> is confronting questions nobody has answered, the permanent condition of working at the frontier of knowledge. The first is a deficit. The second is the engine of discovery.</p>
+
+<p>“The more comfortable we become with being stupid,” he concluded, “the deeper we will wade into the unknown and the more likely we are to make big discoveries.”</p>
+
+<p>The Columbia neuroscientist Stuart Firestein took this further in his 2012 book <em>Ignorance: How It Drives Science</em>. “Working scientists don’t get bogged down in the factual swamp,” he wrote, “because they don’t stop at the facts; they begin there, right beyond the facts, where the facts run out.” Firestein argues that knowledge is a big subject, but ignorance is a bigger one, and it is ignorance, not knowledge, that is the true engine of scientific progress.</p>
+
+<h2 id="the-moment-it-clicked">The moment it clicked</h2>
+
+<p>This week, Sage Bionetworks held its Home Week, one of two annual gatherings where our entire organisation comes together in person. Presentation after presentation focused on artificial intelligence: what it can do for biomedical research, how it accelerates discovery, where it augments human capacity. The demos were impressive. The benchmarks were climbing. And somewhere between the third and fourth talk, Schwartz’s essay came flooding back to me.</p>
+
+<p>We are optimising AI for the wrong thing.</p>
+
+<p>We are building systems that are relentlessly, fluently, confidently intelligent. What we should be building, especially for science, are systems capable of something far harder: <em>artificial stupidity</em>.</p>
+
+<h2 id="the-machines-that-never-feel-stupid">The machines that never feel stupid</h2>
+
+<p>Here is the problem. We have spent the last decade building AI systems that are constitutionally incapable of feeling stupid. Large language models produce fluent, authoritative output whether they are summarising established science or fabricating something entirely. They have no internal signal that says “I am out of my depth.” They experience no discomfort at the boundary of their knowledge, because they have no representation of that boundary at all.</p>
+
+<p>In human cognition, feeling stupid is not a bug. It is a feature. It is an epistemic alarm system: a signal to slow down, question your assumptions, redesign the experiment, ask for help. Schwartz’s former student left her PhD because she interpreted that signal as failure. But the signal itself was working perfectly. It was telling her she was at the frontier.</p>
+
+<p>Our AI systems have no such alarm. And the consequences are not theoretical.</p>
+
+<p>A 2025 study from MIT Media Lab found that medical AI models hallucinate at rates between 15% and 40% on clinical tasks, generating fabricated medications, contraindicated drug recommendations, and false imaging interpretations with the same confident tone they use for established medical facts. A January 2026 analysis from Duke University asked the question bluntly: “It’s 2026. Why are LLMs still hallucinating?”</p>
+
+<p>The answer turns out to be remarkably simple, and damning. In 2025, a team of OpenAI’s own researchers published a paper demonstrating that hallucination is not a bug but an incentive design flaw. Models are trained and evaluated on accuracy metrics where “I don’t know” scores zero. A model that guesses “September 10” for an unknown birthday has a 1-in-365 chance of being right, while honest uncertainty guarantees zero points. As the authors put it: “Because ‘I don’t know’ is scored as zero, bluffing is almost always the optimal strategy.”</p>
+
+<p>We have literally built systems that are penalised for honesty and rewarded for overconfidence. The parallel to scientific culture, where admitting ignorance is too often seen as weakness, is direct. But at least scientists have the capacity to feel stupid. These systems do not.</p>
+
+<h2 id="turing-saw-this-coming-so-did-mcdermott">Turing saw this coming. So did McDermott.</h2>
+
+<p>The irony is that artificial stupidity is not a new idea. It is, in fact, one of the oldest ideas in computer science.</p>
+
+<p>In 1950, Alan Turing proposed his famous test for machine intelligence. Almost immediately, he identified a problem: “The machine would be unmasked because of its deadly accuracy.” A machine that never made mistakes would be obviously inhuman. His proposed solution? The machine should deliberately introduce errors. It should, in effect, be artificially stupid.</p>
+
+<p>For decades, this remained a niche concept. Video game designers used it to make AI opponents beatable. Chatbot builders used it to make conversational agents seem more human. The first Loebner Prize for the most human-like chatbot, awarded in 1991, went to a programme that incorporated deliberate errors, what <em>The Economist</em> described as “artificial stupidity.”</p>
+
+<p>And in 1976, the Yale computer scientist Drew McDermott published a paper with a title that deserves to be read aloud at every AI conference: “Artificial Intelligence Meets Natural Stupidity.” His target was what he called “wishful mnemonics,” the habit of giving AI systems names like “General Problem Solver” that wildly exceeded their actual capabilities. He pleaded for “humble, technical” names instead, warning that grandiose labelling inflates expectations and cripples a field’s self-discipline. Half a century later, we name our systems GPT, Gemini, and Claude, and wonder why the public expects omniscience.</p>
+
+<p>But we missed the deeper insight in both Turing and McDermott. They were not just saying machines should fake mistakes or carry modest names. They were pointing at something about the nature of intelligence itself: that genuine understanding includes knowing what you do not understand. Perfection is not intelligence. It is a simulation of intelligence that breaks down the moment it encounters something genuinely new.</p>
+
+<h2 id="from-dumbing-down-to-wising-up">From dumbing down to wising up</h2>
+
+<p>What I am arguing for is not the old artificial stupidity of video games and chatbots, where systems pretend to be less capable than they are. I am arguing for a new kind: systems that genuinely <em>know what they do not know</em>.</p>
+
+<p>This is starting to happen. A 2026 paper in PLOS Digital Health introduced BODHI, an engineering framework for “curiosity-driven and humble AI” in clinical decision support. BODHI is a dual-reflective architecture grounded in two epistemic virtues: curiosity and humility. It decomposes epistemic uncertainty into task-specific dimensions and constrains model responses using what the authors call “virtue-based stance rules.” The validation results were striking: 97.3% of BODHI-equipped AI responses included appropriate clarifying questions, compared to 0 to 7.8% at baseline. As the authors write: “When an AI system says ‘I don’t know,’ it demonstrates a profound form of intelligence: the recognition of its own limits.”</p>
+
+<p>Read that again: <em>humility metrics</em>. We are beginning to measure AI systems not just by what they get right, but by how well they handle what they cannot get right. That is not a small thing.</p>
+
+<p>In biomedical research, where I work, the stakes of overconfident inference are not abstract. They are patients, treatments, policy decisions, the allocation of hundreds of millions of dollars in research funding. When an AI system confidently proposes a drug target that does not exist, or synthesises evidence from papers it has invented, the cost is not just computational. It is human.</p>
+
+<h2 id="what-science-actually-needs-from-ai">What science actually needs from AI</h2>
+
+<p>The deepest problem is this: science is fundamentally about questions, not answers. The art of research is asking the right question, framing the experiment that will reveal something genuinely new. A system that generates confident answers to questions nobody has asked is not doing science. It is doing the opposite of science. It is filling the space where productive stupidity should live.</p>
+
+<p>What science needs from AI is something much harder than fluent intelligence. It needs systems that can:</p>
+
+<ul>
+  <li>Recognise when they are at the boundary of established knowledge and signal it clearly</li>
+  <li>Distinguish between interpolation (working within known data) and extrapolation (venturing beyond it)</li>
+  <li>Slow down in unfamiliar territory rather than maintaining the same confident pace</li>
+  <li>Say “I don’t know” as a genuine epistemic state, not a fallback when all else fails</li>
+  <li>Support the human researcher’s own productive stupidity, rather than short-circuiting it with premature answers</li>
+</ul>
+
+<p>This is not a call for less capable AI. It is a call for differently capable AI. Systems that are not just intelligent, but <em>wise</em> in the old-fashioned sense: aware of the limits of their own understanding.</p>
+
+<h2 id="the-infrastructure-of-humility">The infrastructure of humility</h2>
+
+<p>When we think about building research infrastructure, we tend to focus on power: more compute, more data, more connections. But the most enduring infrastructure encodes <em>constraints</em>, not just capabilities. The Bermuda Principles, agreed in 1996, required that all human genome sequence data be released within 24 hours. That was not a capability. It was a rule that encoded humility, an acknowledgement that no single institution could or should control the frontier of genomic knowledge.</p>
+
+<p>The same principle applies to AI in research. We need infrastructure that builds in epistemic humility at the protocol level, not as an afterthought but as a design requirement. Systems that flag uncertainty. Pipelines that distinguish between established findings and novel inferences. Platforms that make the boundaries of AI knowledge visible to researchers, rather than burying them under fluent prose.</p>
+
+<h2 id="feeling-stupid-together">Feeling stupid, together</h2>
+
+<p>Schwartz’s former student left science because feeling stupid felt like failure. The real failure would have been never feeling stupid at all.</p>
+
+<p>As we build increasingly capable AI systems for biomedical research, let us remember what Schwartz taught us: the feeling of stupidity is not the enemy of discovery. It is the engine. The most important thing a scientist can say is “I don’t know yet.” The most important thing an AI system should be able to say is exactly the same.</p>
+
+<p>We have spent years teaching machines to be intelligent. Perhaps it is time we taught them to be productively, honestly, courageously stupid.</p>
+
+<p>Because the deeper we wade into the unknown, together, the more likely we are to make big discoveries.</p>
+
+<hr />
+
+<p><em>Susheel Varma is Chief Data Officer at Sage Bionetworks, where he leads data strategy, governance, and infrastructure for biomedical research programmes funded by NIH, ARPA-H, and other agencies.</em></p>
+
+<p><strong>References:</strong></p>
+<ul>
+  <li>Schwartz, M.A. (2008). “The importance of stupidity in scientific research.” <em>Journal of Cell Science</em>, 121(11), 1771.</li>
+  <li>Firestein, S. (2012). <em>Ignorance: How It Drives Science</em>. Oxford University Press.</li>
+  <li>Turing, A.M. (1950). “Computing Machinery and Intelligence.” <em>Mind</em>, 59(236), 433-460.</li>
+  <li>McDermott, D. (1976). “Artificial Intelligence Meets Natural Stupidity.” <em>ACM SIGART Bulletin</em>, 57, 4-9.</li>
+  <li>Kalai, A.T., Nachum, O., Vempala, S. &amp; Zhang, Y. (2025). “Why Language Models Hallucinate.” OpenAI / <em>arXiv:2509.04664</em>.</li>
+  <li>Haim, N. et al. (2025). “Medical Hallucination in Foundation Models and Their Impact on Healthcare.” <em>medRxiv/arXiv</em>.</li>
+  <li>BODHI Framework (2026). “Beyond overconfidence: Embedding curiosity and humility for ethical medical AI.” <em>PLOS Digital Health</em>.</li>
+  <li>Duke University Libraries (2026). “It’s 2026. Why Are LLMs Still Hallucinating?”</li>
+</ul>]]></content><author><name>susheel</name></author><category term="blog" /><category term="AI" /><category term="science" /><category term="epistemology" /><category term="biomedical research" /><category term="machine learning" /><summary type="html"><![CDATA[Why the most important thing we can teach AI is how to say 'I don't know'.]]></summary></entry><entry><title type="html">Bermuda Principles: 30th Anniversary</title><link href="https://susheelvarma.com/pr-preview/pr-5/bermuda-principles-30th-anniversary/" rel="alternate" type="text/html" title="Bermuda Principles: 30th Anniversary" /><published>2026-02-27T08:00:00+00:00</published><updated>2026-02-27T08:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/bermuda-principles-30th-anniversary</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/bermuda-principles-30th-anniversary/"><![CDATA[<p>30 years ago this week, scientists in Bermuda agreed to share all Human Genome Project data within 24 hours.</p>
+
+<p>That one-page agreement (<a href="https://bermudaprinciples.org/">bermudaprinciples.org</a>) unlocked an estimated $965 billion in economic activity (Battelle, 2013). GenBank grew 53,000-fold. When COVID hit, GISAID, built on the Bermuda Principles model, enabled real-time global surveillance.</p>
+
+<p>Meanwhile, both the UK and the US are stuck in the same architectural trap. The UK has spent two decades and billions of pounds on centralised health data programmes that follow the same pattern: centralise, resist, retreat, rebrand. The US has invested tens of billions in biomedical data platforms that cannot interoperate with one another. I should know: as CDO at Sage Bionetworks, and previously as CTO at Health Data Research UK (HDR UK), I helped build some of them. Excellent platforms, no shared grid.</p>
+
+<p>The UK’s 600 million pound Health Data Research Service is a generational opportunity. The US has $47 billion annually from NIH and the first NIH-wide data-sharing mandate. Both need the same thing: protocols, not more platforms.</p>
+
+<p>The evolution from genomics to health data is one sentence: from “release all data openly” to “make governance interoperable so data can be accessed safely.”</p>
+
+<p>I have written two companion blog posts arguing the case for protocol-first infrastructure on both sides of the Atlantic:</p>
+
+<ul>
+  <li><a href="https://opentre.org/uk-blog.html">The Catalogue and the Crisis (UK)</a></li>
+  <li><a href="https://opentre.org/us-blog.html">The Current Wars of Biomedical Data (US)</a></li>
+</ul>
+
+<p>More companion papers to follow on <a href="https://opentre.org/">opentre.org</a></p>
+
+<p>Happy 30th, Bermuda Principles. Now let’s write the health data chapter.</p>]]></content><author><name>susheel</name></author><category term="blog" /><category term="open science" /><category term="genomics" /><category term="health data" /><category term="governance" /><category term="Bermuda Principles" /><summary type="html"><![CDATA[30 years ago, scientists in Bermuda agreed to share all Human Genome Project data within 24 hours. That one-page agreement unlocked an estimated $965 billion in economic activity.]]></summary></entry><entry><title type="html">The Current Wars of Biomedical Data</title><link href="https://susheelvarma.com/pr-preview/pr-5/the-current-wars-of-biomedical-data/" rel="alternate" type="text/html" title="The Current Wars of Biomedical Data" /><published>2026-02-25T10:00:00+00:00</published><updated>2026-02-25T10:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/the-current-wars-of-biomedical-data</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/the-current-wars-of-biomedical-data/"><![CDATA[<p><strong>Why America’s $48 Billion Biomedical Research Enterprise Needs Protocols, Not More Portals</strong></p>
+
+<p><em>~30 min read</em></p>
+
+<hr />
+
+<blockquote>
+  <p><strong>OpenTRE</strong></p>
+
+  <p>This is the US companion to <a href="https://opentre.org/uk-blog.html"><em>The Catalogue and the Crisis</em></a>, which makes the case for protocol-based federation in the UK’s NHS. This piece tells the same structural story from the perspective of US biomedical research. A different system, the same architectural trap.</p>
+
+  <p>Both essays are part of the <a href="https://opentre.org">OpenTRE paper suite</a>, which includes a policy blueprint, technical specification, manifesto, bill of rights, and implementation roadmap.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="in-60-seconds">In 60 Seconds</h3>
+
+<p><strong>What:</strong> OpenTRE proposes a shared protocol layer (identity, governance, analytics, and discovery) that lets existing NIH-funded platforms interoperate without replacing any of them.</p>
+
+<p><strong>Why:</strong> The US has invested tens of billions in biomedical data platforms that cannot talk to each other, costing researchers months of duplicated access negotiations and leaving cross-cutting scientific questions unanswerable.</p>
+
+<p><strong>What should be done now:</strong> NIH should require GA4GH Passport compliance and machine-readable governance in all new data platform grants: a protocol mandate that can begin within existing appropriations by redirecting current platform spend, protecting every dollar already invested.</p>
+
+<hr />
+
+<details>
+<summary>Key Terms and Acronyms</summary>
+
+- **TRE**: Trusted Research Environment: a secure computing space where approved researchers analyse sensitive data without the data leaving the environment.
+- **OMOP**: Observational Medical Outcomes Partnership Common Data Model: a standard schema for representing clinical data so queries work across institutions.
+- **FHIR**: Fast Healthcare Interoperability Resources: an HL7 standard for exchanging healthcare information electronically.
+- **GA4GH**: Global Alliance for Genomics and Health: an international standards body for genomic and health data sharing.
+- **ODRL**: Open Digital Rights Language: a W3C standard for expressing data use policies in machine-readable form.
+- **DUO**: Data Use Ontology: a GA4GH standard vocabulary for encoding consent-based data use conditions.
+- **OHDSI**: Observational Health Data Sciences and Informatics: a global network running federated analytics on the OMOP model across 544 data sources.
+- **N3C**: National COVID Cohort Collaborative: an NIH platform with 23M+ patient records, hosted on Palantir Foundry.
+- **CFDE**: Common Fund Data Ecosystem: an NIH initiative to connect data across Common Fund programmes.
+- **GREI**: Generalist Repository Ecosystem Initiative: an NIH programme aligning metadata across seven generalist repositories.
+- **DMS Policy**: NIH Data Management and Sharing Policy (2023): the first NIH-wide mandate requiring funded researchers to share scientific data.
+- **RAS**: Researcher Auth Service: NIH's national identity broker implementing GA4GH Passports.
+
+</details>
+
+<hr />
+
+<h2 id="the-current-wars">The Current Wars</h2>
+
+<p>In the 1880s, Thomas Edison and George Westinghouse fought the “<a href="https://www.energy.gov/articles/war-currents-ac-vs-dc-power">Current Wars</a>,” a bitter battle over how to electrify America. Edison championed direct current (DC): simple, local, and controlled by Edison’s company. Westinghouse backed alternating current (AC): standardised interfaces, long-distance transmission, and an open market where anyone could build on the grid.</p>
+
+<p>Edison’s DC worked beautifully for a single city block. It could not scale. Every new neighbourhood needed its own power station, its own wiring, its own operator. AC, standardised through transformers and regulated through grid codes, could power a continent.</p>
+
+<p>Edison fought dirty, publicly electrocuting animals to prove AC was dangerous. He lost anyway. The real history is more complex than this sketch. Tesla’s polyphase motor and long-distance transmission advantages were the decisive technical factors. But the structural lesson endures. Edison lost not because AC was safer (it isn’t, inherently), but because <strong>regulated interoperability scales and proprietary control does not.</strong></p>
+
+<p>AC won because of the transformer: a device that stepped voltage up for long-distance transmission and down again for local use, allowing any generator and any appliance to join the same grid. In today’s biomedical research system, <a href="https://www.ga4gh.org/product/ga4gh-passports/">GA4GH Passports</a> are the transformer: they step a researcher’s credentials up into a portable, machine-verifiable format and step them down again at each platform, allowing any data repository and any analytics environment to join the same grid.</p>
+
+<p>The Current Wars ended over a century ago, but their structural logic is playing out right now in US biomedical research, with an embarrassingly familiar problem: hundreds of data portals, each excellently engineered, none able to talk to each other. The world’s most generously funded research system, where <a href="https://report.nih.gov/funding/nih-budget-and-spending-data-past-fiscal-years/budget">NIH alone distributes over $48 billion annually</a>, has produced a patchwork of DC power stations. Each portal lights up its own city block. None of them share a grid.</p>
+
+<blockquote>
+  <p><strong>Key Takeaway</strong></p>
+
+  <p>The US biomedical data system recapitulates the Current Wars: dozens of proprietary power stations, no shared grid. GA4GH Passports are the transformers that could connect them.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="the-landscape-48-billion-forty-silos">The Landscape: $48 Billion, Forty Silos</h2>
+
+<h3 id="the-mandate-without-infrastructure">The mandate without infrastructure</h3>
+
+<p>In January 2023, the <a href="https://sharing.nih.gov/data-management-and-sharing-policy"><strong>NIH Data Management and Sharing (DMS) Policy</strong></a> took effect, the first NIH-wide mandate requiring all funded researchers to share scientific data. A major policy shift, and also, to put it bluntly, an unfunded mandate. No new money for repositories. No compliance infrastructure. No interoperability requirements. Thousands of Data Management and Sharing Plans have since been filed. Almost none of them are verifiable. The DMS Policy told researchers to share. It gave them nowhere coherent to share to.</p>
+
+<h3 id="the-catalogue-without-connections">The catalogue without connections</h3>
+
+<p>The <a href="https://commonfund.nih.gov/dataecosystem"><strong>Common Fund Data Ecosystem (CFDE)</strong></a>, representing roughly $50 to $100 million in total investment, was designed to connect data across Common Fund programmes. After years of work, it covers only 13 of approximately 40 Common Fund programmes. The CFDE portal enables discovery but not integration or federated analysis. Individual programme portals remain separate islands. Another DC power station, larger than most, but still wired for one neighbourhood.</p>
+
+<p>The <a href="https://datascience.nih.gov/data-ecosystem/generalist-repository-ecosystem-initiative"><strong>Generalist Repository Ecosystem Initiative (GREI)</strong></a>, now in its fourth year, has made real progress: seven generalist repositories (Dryad, Figshare, Dataverse, Zenodo, and others) aligned on metadata standards via schema.org. But metadata alignment is not data interoperability. You can find the dataset. You still cannot query across repositories or run federated analysis.</p>
+
+<h3 id="the-platform-without-a-parachute">The platform without a parachute</h3>
+
+<p><a href="https://allofus.nih.gov/"><strong>All of Us</strong></a>, NIH’s flagship precision medicine programme, is a $1.455 billion authorised under the 21st Century Cures Act. It has enrolled over 804,000+ participants, with notable diversity: 45% from underrepresented backgrounds. Yet its budget has been volatile: from $541 million in FY2023 to $158 million proposed for FY2025, a 71% reduction. It is a centralised platform, not a federated one, and an HHS Office of Inspector General cybersecurity audit flagged unresolved vulnerabilities. A single programme, however well-funded, is brittle by design. When funding is cut, the platform and every pipeline built on it are at risk.</p>
+
+<p>The <a href="https://ncats.nih.gov/n3c"><strong>National COVID Cohort Collaborative (N3C)</strong></a> was a pandemic success story: over 23 million patient records, 240+ contributing sites, 4,600+ registered researchers. But it runs on Palantir’s Foundry platform under a contract exceeding $60 million. Researchers who built analytical pipelines on Foundry are now locked into Foundry. That is the trade-off N3C made: speed during a crisis, at the cost of independence afterwards.</p>
+
+<h3 id="us-biomedical-data-landscape-at-a-glance">US Biomedical Data Landscape at a Glance</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Programme</th>
+      <th>What Works</th>
+      <th>Why It Does Not Federate</th>
+      <th>Structural Lesson</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>N3C</strong></td>
+      <td>23M patient records; pandemic-speed assembly</td>
+      <td>Single-vendor platform (Palantir Foundry); pipelines locked in</td>
+      <td>Speed without open interfaces creates lock-in</td>
+    </tr>
+    <tr>
+      <td><strong>All of Us</strong></td>
+      <td>804,000+ participants; 45% from underrepresented backgrounds</td>
+      <td>Centralised platform; budget volatility (71% proposed cut FY2025)</td>
+      <td>Centralised programmes are structurally fragile to budget cycles</td>
+    </tr>
+    <tr>
+      <td><strong>AMP</strong></td>
+      <td>$1B+ across disease areas; real science</td>
+      <td>Same consortium, three platforms, no credential portability</td>
+      <td>Even internal consortia silo without shared protocols</td>
+    </tr>
+    <tr>
+      <td><strong>OHDSI</strong></td>
+      <td>974M records; 544 sources; 88 countries; no central warehouse</td>
+      <td>Governance and identity are out of scope; ETL burden on sites</td>
+      <td>Protocol-first design scales; missing layers are still missing</td>
+    </tr>
+    <tr>
+      <td><strong>CFDE</strong></td>
+      <td>Discovery across 13 Common Fund programmes</td>
+      <td>No integration or federated analysis; only 13 of ~40 programmes</td>
+      <td>Catalogues without query layers are incomplete</td>
+    </tr>
+    <tr>
+      <td><strong>GREI</strong></td>
+      <td>Seven repositories aligned on schema.org metadata</td>
+      <td>Surface-level alignment; no cross-repository query</td>
+      <td>Guidelines without protocols produce unverifiable compliance</td>
+    </tr>
+    <tr>
+      <td><strong>NCPI</strong></td>
+      <td>Connecting AnVIL, BioData Catalyst, CRDC, Kids First</td>
+      <td>Cross-platform queries remain experimental after years</td>
+      <td>Connecting platforms after the fact is harder than designing for interop</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>None of these programmes is bad. Most of them are impressive. That is the frustration. Tens of billions invested, real science produced, and there is still no grid.</p>
+
+<hr />
+
+<p><em>This is an excerpt of the full article. Read the complete version at <a href="https://opentre.org/us-blog.html">opentre.org/us-blog.html</a>.</em></p>
+
+<hr />
+
+<h3 id="about-the-author">About the Author</h3>
+
+<p><a href="https://susheelvarma.com">Susheel Varma</a> is Chief Data Officer at <a href="https://sagebionetworks.org">Sage Bionetworks</a> and was previously Chief Technology Officer at <a href="https://hdruk.ac.uk/">Health Data Research UK</a>, where he co-authored the <a href="https://doi.org/10.5281/zenodo.4594704">TRE Green Paper</a> and <a href="https://doi.org/10.5281/zenodo.5767586">Building Trusted Research Environments</a> guidance.</p>
+
+<p>This is the US companion to <a href="https://opentre.org/uk-blog.html"><em>The Catalogue and the Crisis</em></a>. For the UK perspective on protocols vs platforms, read the original piece.</p>
+
+<hr />
+
+<p><em>Copyright 2026 Susheel Varma. Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</em></p>]]></content><author><name>susheel</name></author><category term="blog" /><category term="health data" /><category term="governance" /><category term="open science" /><category term="NIH" /><category term="biomedical research" /><category term="federation" /><category term="Bermuda Principles" /><summary type="html"><![CDATA[Why America's $48 billion biomedical research enterprise needs protocols, not more portals.]]></summary></entry><entry><title type="html">The Catalogue and the Crisis</title><link href="https://susheelvarma.com/pr-preview/pr-5/the-catalogue-and-the-crisis/" rel="alternate" type="text/html" title="The Catalogue and the Crisis" /><published>2026-02-25T09:00:00+00:00</published><updated>2026-02-25T09:00:00+00:00</updated><id>https://susheelvarma.com/pr-preview/pr-5/the-catalogue-and-the-crisis</id><content type="html" xml:base="https://susheelvarma.com/pr-preview/pr-5/the-catalogue-and-the-crisis/"><![CDATA[<p><strong>Why the UK’s 600 Million Pound Investment Needs Protocols, Not Another Platform</strong></p>
+
+<p><em>~30 min read</em></p>
+
+<hr />
+
+<blockquote>
+  <p><strong>OpenTRE</strong></p>
+
+  <p>This is part of a series of papers arguing that the UK’s health data infrastructure should build protocols, not services. Companion papers covering the full technical case, a visual executive summary, the political and rights-based vision, an enforceable rights framework, a protocol specification, and an implementation roadmap are available at <a href="https://opentre.org/">opentre.org</a>. For the US perspective, see <a href="https://opentre.org/us-blog.html"><em>The Current Wars of Biomedical Data</em></a>.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="in-60-seconds">In 60 Seconds</h3>
+
+<p><strong>What:</strong> OpenTRE proposes that the HDRS invest its 600 million pounds in open interoperability protocols (shared cataloguing rules for health data) rather than another centrally operated platform.</p>
+
+<p><strong>Why:</strong> The UK has spent over two decades and billions of pounds on centralised health data programmes (NPfIT, care.data, GPDPR, FDP) that follow the same pattern: centralise, meet resistance, retreat, rebrand. The problem is not technology. It is the absence of shared rules.</p>
+
+<p><strong>What should be done now:</strong> Six Bermuda-style mandates (24-hour governance disclosure, federated-first presumption, protocol conformance, credential portability, reciprocal contribution, and patient collective voice) would give the HDRS a durable foundation that survives political cycles.</p>
+
+<hr />
+
+<details>
+<summary><strong>Key Terms and Acronyms</strong></summary>
+
+**DARE UK**: Data and Analytics Research Environments UK. A UKRI programme building national TRE infrastructure.
+
+**DUO**: Data Use Ontology. A GA4GH standard for machine-readable data use conditions.
+
+**FDP**: Federated Data Platform. NHS England's 330 million pound data analytics platform operated by Palantir.
+
+**FHIR**: Fast Healthcare Interoperability Resources. An HL7 standard for exchanging healthcare information electronically.
+
+**GA4GH**: Global Alliance for Genomics and Health. An international standards body for genomic and health data sharing.
+
+**HDRS**: Health Data Research Service. The UK government's 600 million pound programme to improve health data access for research.
+
+**NDL**: National Data Library. A cross-sector UK government programme (over 100 million pounds) led by DSIT to make public data accessible for research, public services, and AI development.
+
+**NPfIT**: National Programme for IT. The 12.7 billion pound NHS IT programme (2002-2011), largely abandoned.
+
+**ODRL**: Open Digital Rights Language. A W3C standard for expressing permissions and obligations over data.
+
+**OHDSI**: Observational Health Data Sciences and Informatics. A multi-stakeholder network using the OMOP model across 88 countries.
+
+**OMOP**: Observational Medical Outcomes Partnership Common Data Model. A standardised schema for health data.
+
+**SATRE**: Standard Architecture for Trusted Research Environments. A UK specification for TRE design, developed by DARE UK.
+
+**SDE**: Secure Data Environment. The NHS-specific term for a TRE within the NHS ecosystem.
+
+**TRE**: Trusted Research Environment. A secure computing facility where approved researchers analyse sensitive data without the data leaving the facility.
+
+</details>
+
+<hr />
+
+<h2 id="the-catalogue-and-the-crisis">The Catalogue and the Crisis</h2>
+
+<p>A clinical researcher at University College London is studying antibiotic resistance patterns across three regions of England. The data she needs exists in three separate Secure Data Environments. She has ethics approval. She has funding. She has a clear research question. What she does not have is a way to query across all three environments without negotiating a separate data access agreement with each one, a process that will take, by her own estimate, between nine and fourteen months per SDE. By the time she can run the analysis, her grant will have expired. This is exactly the kind of problem <a href="https://www.opensafely.org/">OpenSAFELY</a> solved during COVID-19: code travelling to 58 million GP records rather than records travelling to researchers. The architecture works. The governance interoperability does not yet exist.</p>
+
+<p>This is not a technology problem. It is a cataloguing problem. The data exists. The shared rules for accessing it do not. The same problem existed in the library world before 1841, when a political refugee published the rules that eventually connected every library on earth.</p>
+
+<blockquote>
+  <p><strong>Why this matters for the HDRS</strong></p>
+
+  <ul>
+    <li><strong>The pattern is identical:</strong> before Panizzi, every library was an island with its own catalogue. Today, every NHS SDE is an island with its own governance process. The 600 million pound HDRS can write the shared rules, or build another island.</li>
+    <li><strong>Metadata travels, content stays:</strong> Panizzi’s rules standardised how to describe a book, not the book itself. OpenTRE standardises how to describe data access conditions, not the patient data. The “book” never leaves the shelf.</li>
+    <li><strong>Sovereignty is preserved:</strong> no library surrendered its collection. No NHS Trust needs to surrender its data. Only the catalogue entries (the governance interfaces) need to conform.</li>
+  </ul>
+</blockquote>
+
+<p>In 1823, a young Italian revolutionary named Antonio Panizzi arrived in England. He had been sentenced to death in absentia for conspiracy against the Duke of Modena. He spoke little English. He had no money, no connections, and no prospects. Within fourteen years he would become Keeper of Printed Books at the British Museum Library, and in 1841 he would publish <a href="https://www.britannica.com/biography/Anthony-Panizzi">91 cataloguing rules</a> that became the foundation of every library interoperability standard that followed.</p>
+
+<p>Before Panizzi, every library was an island. Each institution catalogued its holdings in its own way, using its own conventions, its own entry formats, its own filing logic. A scholar who could navigate the Bodleian’s catalogue was lost in the British Museum’s. Finding a book meant knowing the local system. There was no shared language for describing what a library held.</p>
+
+<p>Panizzi’s insight was that the problem was not the buildings or the collections. The problem was the absence of shared rules. His 91 rules specified how to record an author’s name, how to handle anonymous works, how to cross-reference editions, how to standardise titles. They were, in modern terms, a protocol: a set of agreements about representation that allowed any two institutions to understand each other’s holdings without merging their collections.</p>
+
+<p>The rules did not require libraries to reorganise their shelves, rebuild their reading rooms, or surrender their collections to a central repository. Each library kept its own governance, its own physical arrangements, its own traditions. Only the catalogue entries (the metadata describing what was held and how to find it) needed to conform to a shared standard. The books themselves never left the shelf. A scholar could discover what existed anywhere; the sensitive content stayed where it belonged. In OpenTRE’s terms: the catalogue (governance metadata) travels; the patient data (the book) never does.</p>
+
+<p>That lineage is direct and unbroken. Panizzi’s rules (1841) led to Charles Ammi Cutter’s <a href="https://www.britannica.com/biography/Charles-Ammi-Cutter"><em>Rules for a Dictionary Catalog</em></a> (1876) and, in the same year, Melvil Dewey’s <a href="https://www.oclc.org/en/dewey.html">Decimal Classification</a>, which gave every library a shared language for organising knowledge by subject. Cutter standardised how to describe a book; Dewey standardised where to put it. Together they solved both halves of the interoperability problem. That dual tradition led to the <a href="https://www.aacr2.org/">Anglo-American Cataloguing Rules</a> (1967) and to <a href="https://www.loc.gov/marc/">Henriette Avram</a>’s MARC format at the Library of Congress (1966), which gave cataloguing a machine-readable encoding. MARC led to <a href="https://www.loc.gov/z3950/agency/">Z39.50</a>, the federated query protocol that lets a researcher in London search the catalogue of a library in Tokyo without either institution surrendering its data. Z39.50 led to <a href="https://www.worldcat.org/">WorldCat</a>, a federated discovery catalogue spanning tens of thousands of libraries across 170 countries. And the entire system rests on persistent identifiers like <a href="https://www.isbn-international.org/">ISBN</a> and <a href="https://www.issn.org/">ISSN</a>, which let any catalogue entry point unambiguously to the same work.</p>
+
+<p>A political refugee wrote the rules that let every library in the world talk to each other. No central warehouse was required. No single institution controlled the system. The protocol was the agreement. Everything else was implementation.</p>
+
+<p>I find myself thinking about Panizzi’s rules as I watch the UK prepare to spend 600 million pounds on a <a href="https://www.gov.uk/government/news/prime-minister-turbocharges-medical-research">Health Data Research Service</a>. The NHS has a cataloguing problem. Institutions that hold health data are essentially running incompatible catalogues: bespoke governance agreements, variable access processes, months-long negotiations, each request treated as a unique transaction. The data exists. The shared rules do not.</p>
+
+<p>Panizzi built the Round Reading Room and expanded the collection, but his lasting contribution was the 91 rules that made every catalogue interoperable. The UK’s health data infrastructure needs the same kind of reform.</p>
+
+<p>The <a href="https://healthdatagateway.org/">Health Data Research Gateway</a>, which we built at <a href="https://hdruk.ac.uk/">HDR UK</a>, was the first metadata catalogue of health research datasets across all four UK nations. We also began aligning governance processes by developing a unified Data Access Request process using the Five Safes framework. Without a political mandate, however, uptake has been hard. The challenge of interoperable governance remains.</p>
+
+<blockquote>
+  <p><strong>Key Takeaway</strong></p>
+
+  <p>Panizzi understood that a library’s value lies not in its collection but in the rules that make the collection usable. The NHS faces the same question: the HDRS should fund cataloguing rules, not another building.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Key Takeaway</strong></p>
+
+  <p>The NHS has a cataloguing problem, not a technology problem. Shared rules for describing data access conditions, not more buildings, are what connect institutions.</p>
+</blockquote>
+
+<hr />
+
+<p><em>This is an excerpt of the full article. Read the complete version at <a href="https://opentre.org/uk-blog.html">opentre.org/uk-blog.html</a>.</em></p>
+
+<hr />
+
+<h3 id="about-the-author">About the Author</h3>
+
+<p><em><a href="https://susheelvarma.com">Susheel Varma</a> is Chief Data Officer at <a href="https://sagebionetworks.org">Sage Bionetworks</a> and was previously Chief Technology Officer at <a href="https://hdruk.ac.uk/">Health Data Research UK</a>, where he co-authored the <a href="https://doi.org/10.5281/zenodo.4594704">TRE Green Paper</a> and <a href="https://doi.org/10.5281/zenodo.5767586">Building Trusted Research Environments</a> guidance.</em></p>
+
+<p><em>This is the UK perspective in a two-part series. For the US companion on why biomedical data portals need protocol infrastructure, read <a href="https://opentre.org/us-blog.html">The Current Wars of Biomedical Data</a>.</em></p>
+
+<hr />
+
+<p>Copyright 2026 Susheel Varma. Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>]]></content><author><name>susheel</name></author><category term="blog" /><category term="health data" /><category term="governance" /><category term="TRE" /><category term="open science" /><category term="HDRS" /><category term="Bermuda Principles" /><category term="federation" /><summary type="html"><![CDATA[Why the UK's 600 million pound investment needs protocols, not another platform.]]></summary></entry></feed>
