@@ -14,6 +14,8 @@ tag:
 - Bermuda Principles
 image: /assets/images/blog/opentre-us/current-wars-v2.jpg
 headerImage: true
+original_url: "https://opentre.org/us-blog"
+original_site: "OpenTRE"
 description: "Why America's $48 billion biomedical research enterprise needs protocols, not more portals."
 ---
 

@@ -10,6 +10,8 @@ tag:
 - epistemology
 - biomedical research
 - machine learning
+original_url: "https://www.linkedin.com/pulse/artificial-stupidity-susheel-varma-ji8qe/"
+original_site: "LinkedIn"
 description: "Why the most important thing we can teach AI is how to say 'I don't know'."
 ---
 

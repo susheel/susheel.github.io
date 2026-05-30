@@ -14,6 +14,8 @@ tag:
 - economics
 image: /assets/images/blog/economics/cover.jpg
 headerImage: true
+original_url: "https://www.linkedin.com/pulse/chemist-who-missed-nobel-prize-53-years-susheel-varma-bnzce/"
+original_site: "LinkedIn"
 description: "The economic case for public data infrastructure in the age of AI."
 ---
 

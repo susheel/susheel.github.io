@@ -10,6 +10,8 @@ tag:
 - health data
 - governance
 - Bermuda Principles
+original_url: "https://www.linkedin.com/feed/update/urn:li:activity:7355680953941327873/"
+original_site: "LinkedIn"
 description: "30 years ago, scientists in Bermuda agreed to share all Human Genome Project data within 24 hours. That one-page agreement unlocked an estimated $965 billion in economic activity."
 ---
 

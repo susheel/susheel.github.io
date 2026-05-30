@@ -14,6 +14,8 @@ tag:
 - federation
 image: /assets/images/blog/opentre-uk/hero-panizzi.jpg
 headerImage: true
+original_url: "https://opentre.org/uk-blog"
+original_site: "OpenTRE"
 description: "Why the UK's 600 million pound investment needs protocols, not another platform."
 ---
 
